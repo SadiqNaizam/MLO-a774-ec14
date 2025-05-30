@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -28,46 +28,25 @@ export default {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
+				// Secondary object from original config removed as PRD's secondaryText maps to muted-foreground
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					foreground: 'hsl(var(--muted-foreground))' // For PRD's secondaryText
 				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
-				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
+				// Destructive, Accent, Popover, Sidebar colors removed as not in PRD
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // Will be 0.375rem, same as 'md' effectively
+				md: 'calc(var(--radius) - 2px)', // approx 0.25rem
+				sm: 'calc(var(--radius) - 4px)'  // approx 0.125rem
 			},
+			fontFamily: {
+        		sans: ['Inter', ...defaultTheme.fontFamily.sans], // PRD primaryFont: Inter, sans-serif
+      		},
 			keyframes: {
 				'accordion-down': {
 					from: {
